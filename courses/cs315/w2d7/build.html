@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+
+<button onclick="submitForm()">Submit</button>
+<button onclick="reloadForm()">Reload</button>
+
+	 <br>
+	<script>
+		
+		let form = {Name:'Ram', Age:30, Profession:['Developer','Java']};
+
+		
+		// let myDiv = document.createElement('div');
+		// document.body.append(myDiv);
+
+		let btn = document.querySelector('button')
+	
+
+		for (const key in form) {
+			let elem = document.createElement('div');
+			if (!Array.isArray(form[key])) {
+				elem.innerHTML += `<label for="">${key}</label>
+		    <input type="text" value="${form[key]}">	<br>	`;
+		    btn.before(elem);
+				
+			}
+			
+			if (Array.isArray(form[key])) {
+				console.log(Array.isArray(form[key]));
+				elem.innerHTML = `<label id="myId">${key}</label>`;
+				btn.before(elem)
+				let lbl = document.getElementById('myId');
+				
+				let select = document.createElement('select');
+
+				for (const ele of form[key]) {
+					select.innerHTML += `<option value="">${ele}</option> <br>	`;
+				}
+				lbl.after(select); 
+			} 
+		}
+		function submitForm() {
+			
+		}
+
+	</script>
+</body>
+</html>
