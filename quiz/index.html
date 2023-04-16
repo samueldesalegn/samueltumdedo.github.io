@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+
+
+	
+
+<!-- INPUT HTML  -->
+
+ 
+
+<span>My Span</span>
+
+<p> First Paragraph</p>
+
+<p> Second Paragraph</p>
+
+<ul>
+
+<li>Grapes</li>
+
+<li>Rose</li>
+
+<li>Apple</li>
+
+<li>Pear</li>
+
+</ul>
+
+<!-- <table>
+
+	<tr>
+	
+	<td>Grapes</td>
+	
+	<td>Rose</td>
+	
+	</tr>
+	
+	<tr>
+	
+	<td>Apple</td>
+	
+	<td>Pear</td>
+	
+	</tr>
+	
+	</table> -->
+
+<script>
+	// 1. 1. Add new label element, (with the same text as the top span element.) between First and Second paragraph.
+	let elem = document.querySelector('p');
+	let spanElement = document.querySelector('span')
+	let db = document.createElement('label');
+	db.innerHTML = spanElement.innerHTML;
+	elem.after(db);
+
+
+	// 2. Remove the span element.
+	spanElement.remove();
+
+
+	/* 3. Copy the contents of ul to table and append it at the end. 
+	Table should look like this
+
+	*/
+
+	let ulElement = document.querySelectorAll('li');
+	let arr = [];
+	for (let i = 0; i < ulElement.length; i++) {
+		arr.push(ulElement[i].innerHTML);
+	}
+
+	// tabl.innerHTML = '<tr><td></td><td></td></tr>'
+	// elem.after(tabl)
+	
+// 	let tabl = document.createElement('table');
+// 	for (let i = 0; i < 2; i++) {
+// 		// let rows = document.createElement('tr')
+		
+// 		tabl.innerHTML = `<tr><td>${arr[i]}</td></tr>`;
+// 		document.body.append(tabl)
+
+// }
+
+
+let tabl = document.createElement('table');
+// let rows = document.createElement('tr')
+		
+tabl.innerHTML = `<tr><td>${arr[0]}</td></tr>`;
+document.body.append(tabl);
+
+let trE = document.querySelector('tr');
+let td = document.createElement('td');
+td.innerHTML = arr[1]
+trE.after(td)
+
+
+for (let i = 2; i < arr.length; i++) {
+	let elem = document.createElement('tr')
+	elem.innerHTML = `<td>${arr[i]}</td>`;
+	tabl.append(elem)
+}
+
+
+
+	
+
+
+
+
+</script>
+</body>
+</html>

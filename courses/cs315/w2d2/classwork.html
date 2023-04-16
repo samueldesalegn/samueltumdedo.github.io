@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<select>
+		<option>
+		First
+		</option>
+		<option>
+		Thrid
+		</option>
+		<option> 
+		Fourth
+		</option>
+		<option> 
+		Fifth
+		</option>
+		<option> 
+		Sixth
+		</option>
+	</select>
+
+		<script>
+			// let elem1 = document.querySelector('option');
+			let elem1 = document.querySelector('option');
+			console.log(elem1)
+			let db = document.createElement('option')
+			// let add = "<option>Two</option>;"
+			db.innerHTML = "Second"
+			elem1.after(db);
+
+			let elem = document.querySelectorAll('option');
+			console.log(elem)
+			let lastChild = elem[elem.length-1];
+			let db2 = document.createElement('option')
+			// let add = "<option>Two</option>;"
+			db2.innerHTML = "Last"
+			lastChild.after(db2);
+		</script>
+</body>
+</html>

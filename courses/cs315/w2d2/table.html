@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+    <script>
+        window.onload = function(){
+            let elem = document.querySelectorAll('table tr td');
+			// console.log(elem[0]);
+			for (let i =0; i <elem.length; i++) {
+				let newCol = document.createElement('td');
+				newCol.innerHTML = "New Column";
+				if (elem[i].innerHTML.trim() == '2 Second Col') {
+					elem[i].after(newCol);
+				}
+			}
+
+            // Add a new row at 3rd row
+            let row3 = document.querySelectorAll('table tr');
+            // console.log(row3);
+            let newRow = document.createElement('tr');
+			newRow.innerHTML = "<td>New Row Col 1</td> <td>New Row Col 2</td>";
+            // row3[2].before(newRow);
+
+            // Add fourth col
+            let newCols = document.querySelectorAll('table tr:nth-child(4) td:nth-child(1)');
+            console.log(newCols);
+            let newCol = document.createElement('td');
+            newCol.innerHTML = "New Col before 4th";
+            newCols[0].before(newCol);
+
+
+            
+        }
+    </script>
+</head>
+
+
+
+
+
+
+
+
+<body>
+    <table>
+        <tr>
+            <td>1 First Col</td>
+            <td>1 Second Col</td>
+        </tr>
+        <tr>
+            <td>2 First Col</td>
+            <td>2 Second Col</td>
+            <td>2 Third Col</td>
+        </tr>
+
+        <tr>
+            <td>3 First Col</td>
+            <td>3 Second Col</td>
+        </tr>
+
+        <tr>
+            <td>4 First Col</td>
+            <td>4 Second Col</td>
+        </tr>
+
+    </table>
+</body>
+</html>

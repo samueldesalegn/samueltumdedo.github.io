@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<select>
+		<option>miu</option>
+		<option >harvard</option>
+		<option>fourth</option>
+		<option id="option1">maryland</option>
+		<option >virginia</option>
+	</select>
+
+	<script>
+		let elem = document.querySelectorAll('option');
+		for (let i = 0; i < elem.length; i++) {
+			if (elem[i].id === "option1") {
+				elem[i].id = "California State University";
+			}
+			
+		}
+
+		
+	</script>
+</body>
+</html>

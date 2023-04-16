@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	
+	<table>
+		<tr id="myId" class="myClass">
+				<td>1 First Col</td>
+				<td>1 Second Col</td>
+		</tr>
+		<tr>
+				<td>2 First Col</td>
+				<td>2 Second Col</td>
+				<td>2 Third Col</td>
+		</tr>
+	</table>
+
+	<!-- <---you want div c to append in this ---> 
+	<div id='a'> 
+		<div class='b'>b</div>
+	</div>
+
+	
+
+
+	<script>
+		let rows = document.querySelectorAll('tr');
+		// console.log(rows);
+		let lastRow = rows[rows.length-1];
+		let newRow = document.createElement('tr');
+
+		newRow.innerHTML = `<tr><td>${rows.length+1} First Col</td><td>${rows.length + 1} Second Col</td></tr>`;
+		lastRow.after(newRow);
+
+		let columns = document.querySelectorAll('tr td');
+		// console.log(columns);
+
+		let elem = document.getElementById('myId');
+		
+		elem.myId = "newValue";
+		elem.myClass = "newClass";
+		// elem.innerHTML = "New Value"
+		// console.log(elem.myId);
+		// console.log(elem.myClass);
+
+		let element = document.getElementById('a');
+		console.log(element)
+		let anDiv = document.createElement('div');
+		// console.log(anDiv);
+		anDiv.innerHTML = 'c';
+		element.prepend(anDiv);
+		// $('.a').append($('.c'));
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script>
+
+		window.onload = function(){
+
+			document.getElementById("demo").innerHTML = "Hello World!";
+			let elem = document.querySelector('h2');
+			elem.textContent = "Hello World"
+			// console.log(elem.textContent);
+			elem.style.color = "red";
+
+			let countries = document.querySelectorAll('ol li');
+			// // console.log(countries);
+			// for (const country of countries) {
+			// 	console.log(country.textContent);
+			// }
+			let arr = [];
+			for (let i =0; i < countries.length; i++) {
+				
+
+				// let elem = countries[countries.length -1 -i].textContent;
+				let elem = countries[countries.length -1 -i].innerHTML;
+				console.log(elem);
+				// countries[i].innerHTML = elem;
+				arr.push(elem);
+
+				
+			}
+			console.log(arr);
+			for (let i = 0; i < arr.length; i++) {
+				// countries[i].textContent = arr[i];
+				countries[i].innerHTML = arr[i];
+				
+			}
+
+			let id = document.getElementById('demo');
+			console.log(id)
+			console.log(id.getAttribute('id'));
+
+
+		}
+		
+		
+		
+		</script>
+</head>
+<body>
+	<h2>My First Page</h2>
+
+	<p id="demo">Not me</p>
+
+<ol reversed>Reversing list order
+	<li>America</li>
+	<li>Ethiopia</li>
+	<li>UK</li>
+	<li>India</li>
+	<li>Nepal</li>
+</ol>
+
+
+
+</body>
+</html>

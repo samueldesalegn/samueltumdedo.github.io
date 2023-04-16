@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	
+
+	<script>
+		let form = {Name:'Ram',Age:30,Profession:{list:['Developer','Tester'],selected:'Tester'}};
+		
+	
+
+		
+		let myDiv = document.createElement('div');
+		document.body.append(myDiv);
+	
+
+		for (const key in form) {
+			let elem = document.createElement('div');
+			if (typeof form[key] !== "object") {
+				elem.innerHTML += `<label for="">${key}</label>
+		    <input type="text" value="${form[key]}">	<br>	`;
+		    myDiv.append(elem);
+				
+			}
+			
+			if (typeof form[key] === "object") {
+				elem.innerHTML = `<label id="myId">${key}</label>`;
+				myDiv.append(elem)
+				let lbl = document.getElementById('myId');
+				
+				let select = document.createElement('select');
+
+				form[key].list.sort();
+				form[key].list.reverse();
+				for (const ele of form[key].list) {
+					select.innerHTML += `<option value="">${ele}</option> <br>	`;
+				}
+				
+				lbl.after(select);
+			  
+			} 	
+			
+		}
+
+
+ 
+
+	</script>
+</body>
+</html>

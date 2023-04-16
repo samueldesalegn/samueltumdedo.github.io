@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.light {
+			background-color: #808080;
+			/* color: blue; */
+		}
+		.dark {
+			background-color: black;
+			/* color: red; */
+		}
+	</style>
+</head>
+<body>
+	<input type="text" class="myClass" value="elem">
+	<button onclick=myClick()>submit</button>
+
+	<div class="light dark">
+		<label class="light dark">select</label>
+        <input type="radio" value="dark" name='color'/>
+        <label>dark</label>
+        <input type="radio" value="light" name='color'/>
+    <label>light</label>
+		<button onclick=toggle()>click</button>
+
+	</div> 
+	
+
+	<script>
+		function myClick() {
+			
+			let elem = document.querySelector('input');
+			//  console.log(" Here ",elem.value);
+
+			if (elem.style.display !== 'none') {	
+				elem.style.display = "none";	
+			} else {
+				elem.style.display = '';		
+			}	
+			// if (elem.style.visibility !== "hidden") {
+			// 	elem.style.visibility = "hidden"
+			// }	else {
+			// 	elem.style.visibility = "visible"
+			// }
+		}
+
+		function toggle() {
+			let elem = document.querySelector("input[name='color']:checked");
+			// console.log(elem.value);
+			// console.log(elem.name);
+
+
+			if (elem.value === 'dark' ) {
+				document.body.classList.add('dark');
+				document.body.classList.remove("light");
+				
+			}else {
+				document.body.classList.add('light');
+				document.body.classList.remove("dark");
+				
+			}
+			
+
+
+		}
+	</script>
+</body>
+</html>

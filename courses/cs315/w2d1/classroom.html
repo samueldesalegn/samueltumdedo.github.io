@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            // //Find By ID
+            // let element = document.getElementById('inputID');
+            // console.log(element);
+
+            // //Query Selector - Find API
+            // let element1 = document.querySelectorAll('form input');
+           
+            // for(const elem of element1){
+            //     console.log(elem);
+            // }
+
+            //    console.log(element1)
+            // //Read Attribute
+            // console.log(element.getAttribute('type'));
+
+
+			// 			let option1 = document.querySelectorAll('form select option');
+			// 			for (const elem of option1) {
+            //                 console.log(elem);
+            //             }
+
+			// 			document.getElementById("box").innerHTML = "Five";
+			// 			document.getElementById("optClass").innerHTML = "Four";
+					
+
+
+            // //change attribute
+            // // element.setAttribute('type','radio');
+
+            // element.setAttribute('value','SOme Value');
+            //  //Content
+            // // document.getElementById("myTextArea").innerHTML = 'Changed Text';
+
+			// document.getElementById;
+
+            
+
+            let elem = document.getElementById("box");
+            let a = elem.value;
+            let elem2 = document.getElementById("container");
+            let b = elem2.value;
+            elem.setAttribute('value', b);
+
+            elem2.setAttribute('value', a);
+            // elem2.setAttribute('type', a);
+            
+
+            // [elem, elem2] = [elem2, elem];
+            // console.log(elem);
+
+
+            // Reverse 
+            let element = document.querySelectorAll('reverse');
+            console.log(element);
+
+            let elems = document.getElementById('id1');
+            console.log(elems);
+
+
+
+        
+        }
+    </script>
+</head>
+<body>
+    <form style="margin-bottom: 20px;">
+        <input id="inputID" type="text"  />
+        <input type="radio"/>
+        <input type="checkbox"/>
+    
+        <textarea></textarea>
+
+        <p id="id1" class="myclass">paragrapgh</p>
+    
+        <!-- <select>
+            <option id="box">One</option>
+            <option>Two</option>
+        </select> -->
+    
+        <select multiple>
+            <option id="optClass">One</option>
+            <option>Two</option>
+        </select>
+    
+        <!-- <button>Button</button> -->
+        <input id="box" type="button" value="submit"/>
+        <input id="container" type="button" value="button"/>
+    </form>
+
+    <Ol reversed>
+        <div>America</div>
+        <div>Ethiopia</div>
+        <div>England</div>
+        <div>China</div>
+
+    </Ol>
+    
+</body>
+</html>
+
+<!-- radiobuttons
+<input type="text">
+<button></button>
+checkboxes
+textfield
+password
+dropdown -->

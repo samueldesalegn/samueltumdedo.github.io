@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+
+
+		
+	<script>
+		let myDiv = document.createElement('div');
+		myDiv.innerHTML = "Sites <br> "
+		document.body.append(myDiv);
+		// console.log(myDiv);
+
+		let mysecondDiv = document.createElement('div');
+		mysecondDiv.innerHTML = `<input type="text" placeholder="Enter Site Name" value="">
+		<input type="text" placeholder="Enter Address" value="">
+		<input type="text" placeholder="Enter Keywords" value="">
+		<button onclick="add()">Add</button> <br>`; 
+		myDiv.append(mysecondDiv);
+
+		function add() {
+			let arr = document.querySelectorAll('input');
+			console.log(arr);
+			for (let i = 0; i < arr.length; i++) {
+				if(!arr[i].value) { 
+					arr[i].before('*');
+					// arr[i].setAttribute('style','border:1px solid red');
+					arr[i].style.border = '1px solid red';
+					let err = document.createElement('label');
+					err.innerHTML =`please ${arr[i].placeholder}`;
+					mysecondDiv.append(err)
+				
+				}
+			} 
+			if (arr[0].value && arr[1].value && arr[2].value) {
+				
+				let divtbl = document.createElement('div');
+				divtbl.innerHTML = `<label id="myId"> Add To </label>
+																<input type="checkbox" name="checker" value="tbl">
+																<label for=""> Table </label>
+																<input type="checkbox" name="checker" value="list">
+																<label for=""> List </label>
+																<button onclick="submit()">submit</button> <br>
+																`
+																; 
+				mysecondDiv.after(divtbl);
+			}
+
+				// let selected = document.querySelector("input[name='checker']:checked");
+				// console.log(selected.value);
+			
+
+
+			
+		}
+		
+		function submit() {
+			let selected = document.querySelector("input[name='checker']:checked");
+
+			console.log(selected.value)
+			if (selected.value === "list") {
+				let lst = document.createElement('div');
+				lst.innerHTML = `<ul> List <br>
+												<a href="https://www.google.com"> Google </a>
+												<li>Java</li>
+												<li>JavaScript</li>
+												<a href="https://www.paypal.com"> Paypal </a>
+												<li>Account</li>
+												</ul> <br>`;
+
+			  selected.after(lst);
+			}else if(selected.value === "tbl") {
+				let tbl = document.createElement('div');
+				tbl.innerHTML = `<table> table <br>
+												<tr>
+													<th>Site Names</th>
+													<th>Keywords</th>
+												</tr>
+												<tr>
+													<td><a href="https://www.google.com"> Google </a></td>			
+													<td>Java, JavaScript</td>
+												</tr>
+												<tr>
+													<td><a href="https://www.paypal.com"> Paypal </a></td>
+													<td>Account</td>
+												</tr>	
+										</table> `;
+						selected.after(tbl);
+			} 
+		}
+
+		
+
+	</script>
+</body>
+</html>

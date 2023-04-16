@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<script src="https://localhost:49506/8ee4ea609a6346c4cf34c2b621ac79ba.js"></script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+		<style>
+			img {
+				width: 20%;
+			}
+			img {
+				border-radius: 50%;
+			}
+		</style>
+    
+</head>
+
+<body>
+<!-- link - <www class="hoohl vom"></www> -->
+
+ <!-- <div>
+	 <img src="lions.jpg" name="lion">
+	 <img src="girl.jpg" name="girl">
+	 <img src="blacky.jpg" name="blacky"> 
+	 
+</div> -->
+
+	
+
+
+    <h1>Preferences</h1>
+    Show Image <input type="checkbox" onclick='buildForm();' />
+		<!-- <button>click</button> -->
+		<div for="">Image Address
+			<input type="text">
+		 </div>
+		 <div id="">Image Shape 
+		 <select name="" id="">
+			
+		 </select>
+		 <button onclick="submit()">submit</button> <br>
+		 </div>
+		
+
+		<script>
+			
+			function buildForm() {
+				// let h1 = document.querySelector('h1');
+				// let btn = document.createElement('button');
+				// btn.innerHTML = `<button>click</button>`;
+				// btn.append(inpt)
+				
+				
+				let inpt = document.querySelector('input [:checked]');
+				// console.log(inpt)
+
+				if (inpt) {
+					let fDiv = document.createElement('div');
+					fDiv.innerHTML = `
+					                 <div for="">Image Address
+						               <input type="text" value="">
+													</div>
+		                      <div>Image Shape 
+			                    <select name="" id="">
+				
+			                    </select>
+			                    <button onclick="submit()">submit</button> <br>
+	                        </div>
+													`;
+
+				  fDiv.after(inpt);
+
+					// let imgSh = document.createElement('')
+					
+				}
+
+			}
+
+			function submit() {
+				let imAdd;
+				let imgSh = document.querySelectorAll('div select');
+
+				let url = new URLSearchParams(search.location);
+				for (const [key, value] in url) {
+						imAdd.push(url[key]);					
+					}
+				
+
+				for (let i = 0; i < imAdd.length; i++) {
+
+					if (imgSh.innerHTML === 'round' ) {
+						imAdd[i].style.borderRadius = '50%';
+						// imAdd[i].style.display = 'block'
+					} else {
+						imAdd[i].style.width = '20%';
+					}
+					
+				}
+			}
+
+		</script>
+
+
+</body>
+
+</html>

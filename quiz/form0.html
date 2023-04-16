@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+
+	<div>
+		
+	</div>
+
+	<script>
+		let fDiv = document.createElement('div');
+		fDiv.innerHTML = `<label>Country</label> 
+											<select name="skills" > 
+											<option value="java">Java</option> <option value="javascript">Javascript</option>
+											<option value="python" selected>Python</option>
+										</select >
+										`;
+		document.body.append(fDiv);
+		let sDiv = document.createElement('div');
+		sDiv.innerHTML = `<label for="">Gender</label>
+											<input type="radio" value="male">
+											<label for="">male</label>
+											<input type="radio" value="male">
+											<label for="">female</label>`;
+		fDiv.after(sDiv);
+	</script>
+</body>
+</html>

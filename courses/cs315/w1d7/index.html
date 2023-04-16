@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		/* #combinatorList li {
+			color:red;
+		} */
+		/* #coffee ~ li {
+			color: red;
+		} */
+		.tsummary > li {
+			color: rgb(0, 255, 42);
+		}
+		/* .box > li {
+			color: blue;
+		} */
+		
+	</style>
+</head>
+<body>
+	<ul class="tsummary">
+		<li>Defines the relationship between 2 selectors</li>
+		<li id="combinatorList">There are four in total
+
+			<ul>
+				<li>Descendant combinator (space)</li>
+				<li id="coffee">Child combinator (>)</li>
+				<li>General sibling combinator (+)</li>
+				<li>Adjacent sibling combinator (~)</li>
+			</ul>
+		</li>
+	</ul>
+	<li>Hello</li>
+	<li>Hello2</li>
+
+	<div class="box">
+		<li>F direct child of div</li>
+		<li>S direct child of div</li>
+		<ul>
+			<li>grandchild</li>
+		</ul>
+	</div>
+</body>
+</html>

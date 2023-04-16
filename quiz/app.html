@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.myClass{
+			 
+				padding:10px;
+				text-align:center;
+		}
+		#heading{
+				background-color:bisque;
+		}
+		#footer{
+				background-color: purple;
+				color:white;
+		}
+</style>
+</head>
+<body>
+
+	<p id="heading" class="myClass">Heading</p>
+	<div>
+		<label>Scriptures</label>
+		<select>
+				<option>Vedas</option>
+				<option>Upanishads</option>
+		</select>
+		<button onclick="showText()">Change</button>
+</div>
+
+<div id="newText"><label>SelectedText:</label><label>Upanishads</label></div>
+<p id="footer" class="myClass">The End</p>
+	<script>
+		
+		function showText(){
+            let scriptures = document.querySelectorAll('option');
+            let selectedText;
+            for(let scrip of scriptures){
+                if(scrip.selected){
+                    selectedText = scrip.innerHTML;
+                }
+            }
+            if(document.getElementById('newText'))
+                document.getElementById('newText').remove();
+            let selectedLabel = document.createElement("label");
+            document.getElementById('footer').before(selectedLabel);
+            selectedLabel.outerHTML="<div id='newText'><label>SelectedText:</label><label>"+selectedText+"</label></div>";
+        }
+    
+	</script>
+</body>
+</html>

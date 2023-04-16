@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<div>
+		Scriptures
+		<select name="" id="">
+			<option value="">select</option>
+			<option value="">Vedas</option>
+			<option value="">Upanishads</option>
+
+		</select>
+		<button onclick="show()">show</button>
+	</div>
+	<!-- <div>
+		<label for="">Aitariya </label>
+		<label for="">Mandukiya</label>
+	</div> -->
+	
+	<label>
+		<input type="checkbox" value="Aitariya" name='script'/>
+		<label>Aitariya</label>
+		<input type="checkbox" value="Brihadaranyaka" name='script'/>
+		<label>Brihadaranyaka</label>
+		<input type="checkbox" value="Chandogya" name='script'/>
+		<label>Chandogya</label>
+		<input type="checkbox" value="Mandukiya" name='script'/>
+		<label>Mandukiya</label>
+		
+	</label> <br>
+	<label>
+		<input type="checkbox" value="Rig" name='script'/>
+		<label>Rig</label>
+		<input type="checkbox" value="Yajur" name='script'/>
+		<label>Yajur</label>
+		<input type="checkbox" value="Adharvana" name='script'/>
+		<label>Adharvana</label>
+		<input type="checkbox" value="Sama" name='script'/>
+		<label>Sama</label>
+		
+	</label> <br>
+	<button onclick="submit()">submit</button>
+
+	
+
+
+	<script>
+		function show() {
+			
+			let elements = document.querySelectorAll('option');
+			
+			let value = "";
+			for (const elem of elements) {
+				if (elem.innerHTML === "select") {
+					value = "Please select valid option";
+				}else if(elem.innerHTML === "Vedas") {
+					value = document.createElement('label');
+					value.innerHTML = "Attariya Mandukiya"
+				}else if (elem.innerHTML === "Upanishads") {
+					value = Document.createElement('label');
+					value.innerHTML = ``;
+					
+				}
+			}
+
+		}
+
+		function submit() {
+			
+		}
+	</script>
+</body>
+</html>
