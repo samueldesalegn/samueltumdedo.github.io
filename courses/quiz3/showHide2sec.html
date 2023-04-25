@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<p id="box">Para3</p>
+	<script>
+		let show = false;
+		let timerId = setInterval(() => {
+      const box = document.getElementById('box');
+    if (show) {
+			box.style.display = 'block';
+			clearInterval(timerId);
+		}else {
+			// 👇️ removes element from DOM
+			 box.style.display = 'none';
+		}
+		show = true;
+
+	// //to change the color to blue after two sectonds
+	// box.style.color = 'blue';
+
+  // 👇️ hides element (still takes up space on page)
+  // box.style.visibility = 'hidden';
+}, 2000); // 👈️ time in milliseconds
+	</script>
+</body>
+</html>

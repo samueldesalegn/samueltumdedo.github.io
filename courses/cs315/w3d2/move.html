@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		select {
+			width: 60px;
+		}
+	</style>
+</head>
+<body>
+	<div style="display:flex;gap:10px;justify-content:space-around">
+		<select multiple name="source" >
+			<option>Roz</option>
+			<option>Sami</option>
+			<option>Wini</option>
+			<option>Tangis</option>
+		</select>
+		<div style="display:flex;flex-direction:column">
+			<button onclick="move('source', 'destination');">Move</button>
+			<button onclick="move('destination', 'source');">BMove</button>
+			
+		</div>
+		<select multiple name="destination" >
+
+		</select>
+			
+	</div>
+	
+
+	<script>
+		function move(src, dest) {
+			let query = `select[name="${src}"] option:checked` || `select[name="${src}"] option`;
+			let sourceSelect = document.querySelectorAll(query);
+			let destination = document.querySelector(`select[name="${dest}"]`);
+			for (const elem of sourceSelect) {
+				destination.append(elem);
+			}
+		}
+	</script>
+</body>
+</html>

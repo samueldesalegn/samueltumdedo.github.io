@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<h1>Heading</h1>
+    <div id="myDIV"> Printing....</div>
+    <button onclick='togglePrint()'>Start(Stop)</button>
+
+	<script>
+		let list = [{ id: 2, fname: 'Martha', lname: 'Doe', img: 'images/girl.jpg' },
+        { id: 1, fname: 'Maharishi', lname: 'Mahesh', img: 'images/mahesh.jpg' },
+				{id: 3, fname:'Lion', lname: "Lioness", img: 'images/lions.jpg'}];
+
+
+		let run = 'stop'
+		let interval;
+		let index = 0;
+		let order = 'col';
+		function togglePrint() {
+			if (run === 'start') {
+				run = 'stop'
+				clearInterval(interval);
+				return;
+			}
+			run = 'start';
+		let myDiv = document.getElementById('myDIV');
+		// document.body.append(myDiv);
+		
+		// let interval;
+		// let index = 0;
+		// let order = 'col';
+		interval = setInterval(() => {
+			if (index == list.length) {
+				order = (order ==="col")? 'row' : 'col';
+				index = 0;
+			}
+			let elem = (order ==="col")? document.createElement('div'): document.createElement('label');
+			
+			elem.innerHTML = `<img src="${list[index++].img}" style="height:20px;width:20px;object-fit: cover;">
+				   `;
+			myDiv.append(elem);
+			
+		}, 1000);
+		
+    }
+	</script>
+</body>
+</html>

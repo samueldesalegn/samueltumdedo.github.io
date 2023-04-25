@@ -7,19 +7,26 @@
 	<title>Document</title>
 </head>
 <body>
-
+	<p>Name: </p>
+	<p>Age: </p>
+	<p>Profession: </p>
 	<script>
-		const urlParams = new URLSearchParams(location.search);
-            // console.log(urlParams)
-            
-            for (const [key, value] of urlParams) {
-                console.log(`${key}:${value}`);
-                if(key=='email')
-                    document.getElementById('myInput').innerHTML += value;
-                else if(key=='password')
-                    document.querySelector('p').innerHTML += value;
-								// else if(key =)
-            }
-	</script>
+		
+				console.log(location.search);
+				const urlParams = new URLSearchParams(location.search);
+
+				for (const [key, value] of urlParams) {
+						console.log(`${key}:${value}`);
+						let elem = document.querySelectorAll('p');
+						if (key == 'Name')
+								elem[0].innerHTML += value;
+						else if (key == 'Age')
+								elem[1].innerHTML += value;
+						else 
+								elem[2].innerHTML += value;
+				}
+
+		
+</script>
 </body>
 </html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	
+		
+	<div class="container" id='container'> 
+
+	</div> 
+	<script>
+		let list = [{ id: 2, fname: 'Martha', lname: 'Doe', img: 'images/girl.jpg' },
+        { id: 1, fname: 'Maharishi', lname: 'Mahesh', img: 'images/mahesh.jpg' },
+				{id: 3, fname:'Lion', lname: "Lioness", img: 'images/lions.jpg'}];
+
+		let div = document.getElementById('container');
+		div.setAttribute('style', 'display:flex;gap:10px;flex-wrap:wrap;');
+
+
+		let btn = document.createElement('button');
+		btn.setAttribute('onclick', 'compare()');
+		btn.innerHTML = 'sort';
+		div.before(btn);
+		create(list);
+
+		function create(list) {
+			let div = document.getElementById('container');
+			div.innerHTML = "";
+			for (const elem of list) {
+				div.innerHTML += `
+				<div style="display:flex;gap:10px;flex-wrap:wrap;">
+		      <img src="${elem.img}" style="height:100px;width:100px;object-fit: cover;">
+				  <div>
+			      <div>${elem.fname}</div>
+			      <p>${elem.lname}</p>
+			      <button onclick="deleteCol(this)">Delete</button>
+		      </div>
+	      </div>
+	    `;
+			}
+		}
+
+		function deleteCol(any) {
+			any.parentElement.parentElement.remove();
+		}
+
+		function compare() {
+			let newlist = list.sort((a, b) =>(a.fname > b.fname)? 1: -1);
+			create(newlist);
+		}
+		
+
+
+	</script>
+	
+
+</body>
+</html>

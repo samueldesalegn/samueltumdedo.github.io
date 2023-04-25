@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	
+	
+
+	<script>
+		let form = {Name:'Ram',Age:30,Profession:{list:['Developer','Tester'],selected:'Tester'}};
+		
+		function createForm() {
+			
+			let div = document.createElement('div');
+			document.body.append(div);
+	
+			for (const key in form) {
+				let myDiv = document.createElement('div');
+				if (typeof form[key] !== 'object') {
+					myDiv.innerHTML += `<label id="${key}">${key}</label> 
+															<input type="text" value="${form[key]}"> <br>`;
+					
+				}
+				div.append(myDiv);
+	
+	
+				if (typeof form[key] === 'object') {
+					myDiv.innerHTML = `<label id="${key}" for="">${key}</label>`;
+					div.append(myDiv);
+	
+					let lbl = document.getElementById(`${key}`);
+					let select = document.createElement('select');
+	
+					for (const elem of form[key].list) {
+						if (elem !== form[key].selected) {
+							select.innerHTML += `<option value="">${elem}</option>`;
+						} else {
+							select.innerHTML += `<option value="" selected>${elem}</option>`;
+						}
+					}
+					lbl.after(select);
+				}
+			}
+			let ldiv = document.createElement('div');
+							ldiv.innerHTML = "<button onclick='saveValues();'>Submit</button><button onclick='reloadForm();'>Reload</button>";
+							div.append(ldiv);
+			
+		}
+		createForm();
+
+		function reloadForm() {
+      createForm();
+  	}
+
+		function saveValues() {
+            form.Name = document.getElementById('Name').value;
+            form.Age = document.getElementById('Age').value;
+        }
+		
+	</script>
+</body>
+</html>

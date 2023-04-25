@@ -14,11 +14,10 @@
 		
 	
 		let myForm = document.createElement('form');
-		myForm.setAttribute('action', 'formSubmit.html')
-		document.body.append(myForm);
+		myForm.setAttribute('action', "submit.html")
+		document.body.append(myForm)
 		
 		let myDiv = document.createElement('div');
-		
 		myForm.append(myDiv);
 	
 
@@ -37,25 +36,28 @@
 				let lbl = document.getElementById('myId');
 				
 				let select = document.createElement('select');
-				select.setAttribute('name', key);
-				
+                select.setAttribute('name',key);
+				// form[key].list.sort();
+				// form[key].list.reverse();
 				for (const ele of form[key].list) {
-					if (ele !== form[key].selected) {
-						select.innerHTML += `<option value="${ele}">${ele}</option> <br>	`;	
-					} else {
-						
-						select.innerHTML += `<option value="${ele}" selected>${ele}</option> <br>	`;	
-					}
+					select.innerHTML += `<option value="${ele}">${ele}</option> <br>	`;
 				}
+				
 				lbl.after(select);
 			  
-			}	
+			}
+			
+			
 		}
 		
 		let btn = document.createElement('input');
 		btn.setAttribute('type', 'submit');
-		btn.setAttribute('value', 'submit');
+		btn.setAttribute('value', 'submit')
 		myForm.append(btn);
+
+	
+
+ 
 
 	</script>
 </body>

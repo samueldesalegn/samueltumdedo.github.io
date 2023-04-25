@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            console.log(location.search);
+            const urlParams = new URLSearchParams(location.search);
+
+            for (const [key, value] of urlParams) {
+                console.log(`${key}:${value}`);
+                if (key == 'Name')
+                    document.querySelector('p').innerHTML += value;
+                else if (key == 'Age')
+                    document.querySelectorAll('p')[1].innerHTML += value;
+                else 
+                    document.querySelectorAll('p')[2].innerHTML += value;
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+    <p>Name: </label>
+    <p> Age: </p>
+    <p> Profession: </p>
+</body>
+
+</html>

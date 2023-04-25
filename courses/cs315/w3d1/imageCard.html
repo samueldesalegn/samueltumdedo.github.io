@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+		<!-- <img src="images/lions.jpg" alt=""> -->
+    <script>
+        let list = [{ id: 2, fname: 'Martha', lname: 'Doe', img: 'images/girl.jpg' },
+        { id: 1, fname: 'Maharishi', lname: 'Mahesh', img: 'images/mahesh.jpg' },
+				{id: 3, fname:'Lion', lname: "Lioness", img: 'images/lions.jpg'}
+			]
+
+        window.onload = function () {
+            let div = document.getElementById('container');
+            div.setAttribute('style', 'display:flex;gap:10px;flex-wrap:wrap;');
+
+            let sort = document.createElement('button');
+            sort.innerHTML='Sort';
+            sort.setAttribute('onclick','sort()')
+            div.before(sort);
+            create(list);
+        }
+
+        function create(list) {
+            let div = document.getElementById('container');
+            div.innerHTML = '';
+            for (let myobj of list) {
+                div.innerHTML += '<div style="display:flex;gap:10px;flex-wrap:wrap;">'
+                    + "<img src ='" + myobj.img + "' style='height:100px;width:100px;object-fit: cover;'/>"
+                    + '<div>'
+                    + '<div>' + myobj.fname + '</div>'
+                    + '<p>' + myobj.lname + '</p>'
+                    + '<button onclick="deleteCol(this);">Delete</button>'
+                    + '</div></div>'
+            }
+        }
+
+        function deleteCol(any) {
+            any.parentElement.parentElement.remove();
+        }
+        function sort() {
+            let newlist = list.sort((obj1, obj2) => (obj1.fname > obj2.fname)? 1: -1
+                // return (obj1.id > obj2.id)? 1: -1;
+								)
+            console.log(newlist)
+            create(newlist);
+        }
+    </script>
+</head>
+
+<body>
+    <div id="container"></div>
+</body>
+
+</html>

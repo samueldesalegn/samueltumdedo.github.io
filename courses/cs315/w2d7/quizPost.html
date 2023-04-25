@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<p id="Name">Name: </p>
+	<p id="Age">Age: </p>
+	<p>Profession: </p>
+	
+	<script>
+		
+		let form = {Name:'Ram', Age:30, Profession:['JavaScript','Java']};
+		console.log(form.Name);
+
+	
+		function submitForm() {
+			let name = document.getElementById('Name');
+			let age = document.getElementById('Age');
+			let elem = document.querySelector('option')
+			
+
+			const urlParams = new URLSearchParams(location.search);
+
+				for (const [key, value] of urlParams) {
+						console.log(`${key}:${value}`);
+						// let elem = document.querySelectorAll('p');
+						if (key == 'Name')
+								name.innerHTML += value;
+						else if (key == 'Age')
+								age.innerHTML += value;
+						else 
+								elem.innerHTML += value;
+				}
+
+			
+		}
+
+		function reloadForm(){
+			const urlParams = new URLSearchParams(location.search);
+
+			document.getElementById('Name').value = form.Name;
+			console.log(document.getElementById('Name'))
+			document.getElementById('Age').value = form.Age;
+
+		}
+ 
+
+	</script>
+</body>
+</html>

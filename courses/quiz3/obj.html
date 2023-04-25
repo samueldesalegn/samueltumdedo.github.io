@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+
+	
+	<script>
+		let form = {name:"Ram", age:30, profession:"developer"};
+		let div = document.createElement('div');
+		document.body.append(div);
+
+		let secDiv = document.createElement('div');
+		for (const key in form) {
+			
+			secDiv.innerHTML += `<label for="">${key}</label>
+	                        <input type="text" value="${form[key]}"> <br> `;
+		}
+		div.append(secDiv);
+		
+
+
+	</script>
+</body>
+</html>

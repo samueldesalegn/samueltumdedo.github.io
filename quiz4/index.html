@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	
+
+</head>
+<body>
+
+
+	
+	<script>
+		let flowers = [{ color: 'yellow', name: 'rose', type: 'radio' }, { type: 'radio', color: 'blue', name: 'zinnia' },
+                 { color: 'red', name: 'chrysanthumum', type: 'checkbox' }];
+
+	let div = document.createElement('div');
+	document.body.append(div);
+
+	let sDiv = document.createElement('div');
+
+	for (const elem of flowers) {
+		sDiv.innerHTML += `<div >
+	                     <input type="${elem.type}" name="">
+		                   <label id="${elem.name}"  style="color:${elem.color}">${elem.name}</label>
+                      </div>`;
+	}
+	div.append(sDiv);
+
+	index = 0;
+	let timerId = 0;
+	
+	
+	for (let i=0; i<flowers.length; i++) {
+		let lbl = document.getElementById(flowers[i].name);
+		
+		let color = flowers[flowers.length].color;
+		timerId = setInterval(() => {
+			if (color === flowers[flowers.length].color) {
+				clearInterval(timerId)
+				color = flowers[i].color;
+				index = 0;
+				
+				
+			}else {
+				color = flowers[flowers.length].color;
+				// lbl[i].setAttribute('style', `color:${color}`)
+
+				lbl[i].setAttribute('style', `color:${color}`);
+				
+			}
+			div.append(lbl);
+			
+			
+		}, 1000);
+		index++;
+		
+	}
+
+
+	</script>
+</body>
+</html>

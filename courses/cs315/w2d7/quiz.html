@@ -14,11 +14,10 @@
 		
 	
 		let myForm = document.createElement('form');
-		myForm.setAttribute('action', 'formSubmit.html')
-		document.body.append(myForm);
+		myForm.setAttribute('action', 'quizPost.html')
+		document.body.append(myForm)
 		
 		let myDiv = document.createElement('div');
-		
 		myForm.append(myDiv);
 	
 
@@ -56,6 +55,12 @@
 		btn.setAttribute('type', 'submit');
 		btn.setAttribute('value', 'submit');
 		myForm.append(btn);
+
+		let btn2 = document.createElement('input');
+		btn2.setAttribute('type', 'submit');
+		btn2.setAttribute('onclick', 'reloadForm()')
+		btn2.setAttribute('value', 'reload');
+		myForm.append(btn2)
 
 	</script>
 </body>

@@ -10,6 +10,9 @@
 </head>
 
 <body>
+
+	
+
     <h1>Preferences</h1>
     Show Image <input type="checkbox" onclick='buildForm();' />
 
@@ -23,15 +26,14 @@
 									myDIV = document.createElement('div');
 									document.body.append(myDIV);
 							}
-							myDIV.innerHTML = '<form action="form.html">'
-									+ "Image address <input type='text' name='address'/>"
-									+ '<br />'
-									+ ' Image Shape <select name="shape">'
-									+ ' <option value="round">round</option>'
-									+ '<option value="square">square</option>'
-									+ '</select>'
-									+ '<input type="submit" />'
-									+ '</form>';
+							myDIV.innerHTML = `<form action="postForm.html">
+																	Image address <input type='text' name='address'/><br />
+																	Image Shape <select name="shape">
+																		<option value="round">round</option>
+																		<option value="square">square</option>
+																	</select>
+																		<input type="submit" />
+																</form>`;
 							
 					}else
 							document.querySelector('div').innerHTML='';

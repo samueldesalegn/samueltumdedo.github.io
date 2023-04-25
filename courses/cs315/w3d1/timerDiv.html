@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<h1>Heading</h1>
+    <div id="myDIV"> Printing....</div>
+    <button onclick='togglePrint()'>Start(Stop)</button>
+
+	<script>
+		let fruits = ['apple', 'banana', 'pear'];
+
+		let run = 'stop'
+		let interval;
+		let index = 0;
+		let order = 'col';
+		function togglePrint() {
+			if (run === 'start') {
+				run = 'stop'
+				clearInterval(interval);
+				return;
+			}
+			run = 'start';
+		let myDiv = document.getElementById('myDIV');
+		// document.body.append(myDiv);
+		
+		// let interval;
+		// let index = 0;
+		// let order = 'col';
+		interval = setInterval(() => {
+			if (index == fruits.length) {
+				order = (order ==="col")? 'row' : 'col';
+				index = 0;
+			}
+			let elem = (order ==="col")? document.createElement('div'): document.createElement('label');
+			elem.innerHTML = `${fruits[index++]} `;
+			myDiv.append(elem);
+			
+		}, 1000);
+		
+		
+    }
+	</script>
+</body>
+</html>

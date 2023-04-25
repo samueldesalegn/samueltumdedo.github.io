@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		let form = {Name:'Ram', Age:30, Profession:['Developer','Java']};
+
+		let div =document.createElement('div');
+		document.body.append(div);
+
+		for (const key in form) {
+			let myDiv = document.createElement('div');
+			if (!Array.isArray(form[key])) {
+				myDiv.innerHTML += `<label >${key}</label>
+	                          <input type="text" value="${form[key]}"> <br>`;
+				div.append(myDiv);
+				
+			}
+			if (Array.isArray(form[key])) {
+				myDiv.innerHTML = `<label id="myId" >${key}</label>`;
+				div.append(myDiv);
+				let lbl = document.getElementById('myId');
+				
+				let select = document.createElement('select');
+
+				for (const elem of form[key]) {
+					console.log(elem);
+					select.innerHTML += `<option value="">${elem}</option> <br>`;
+				}
+				lbl.after(select);
+			}
+		}
+		
+	</script>
+</body>
+</html>
