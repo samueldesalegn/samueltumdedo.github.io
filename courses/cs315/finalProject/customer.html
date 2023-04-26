@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Inventory Items</title>
+  </head>
+  <body>
+    <div id="inventory-list" style="display:grid; gap:10px; grid-template-columns: 1fr 1fr;">
+    </div>
+    <script>
+        // Parse the 'inventory' item from localStorage
+        var obj = JSON.parse(localStorage.getItem('inventory'));
+   
+        // Get the <ul> element from the HTML page
+          var div = document.getElementById('inventory-list');
+  
+  for(const value of obj){
+      let img=document.createElement('img');
+      img.setAttribute('style', 'border-right: 10px; padding:20px')
+      for (var prop in value) {
+          if(prop=='image'){
+              img.src="imageCollection/" +value[prop];
+          }else{
+              var div1 = document.createElement('div');
+              div1.innerHTML = prop + ': ' + value[prop];
+              div.append(div1);
+          }
+      }
+      div.before(img);
+  }
+      
+        // Iterate over the properties of the 'obj' object and add them to the <ul> as <li> elements
+      </script>
+
+    <!-- <img src="imageCollection/imageService (1).jpeg" alt=""> -->
+  </body>
+</html>

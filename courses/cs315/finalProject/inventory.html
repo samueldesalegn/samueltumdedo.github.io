@@ -11,7 +11,7 @@
             border-collapse: collapse;
             border-spacing: 0;
             width: 100%;
-            border: 1px solid #ddd;
+            border: 1px solid #dddddd;
         }
 
         th,
@@ -21,58 +21,145 @@
         }
 
         tr:nth-child(even) {
-            background-color: #f2f2f2;
+            background-color: #b6b2b2;
         }
     </style>
     <script>
-         var prodcutArray = [{ name: 'dd', price: 30,image:'/ddd.jpeg' }, { name: 'dddd', price: 30 }];
-        //Set Item on every change to the object array, add, delete and edit
-         localStorage.setItem('inventory', JSON.stringify(prodcutArray));
         
+        
+        var prodcutArray=[];
+       
+        // //Set Item on every change to the object array, add, delete and edit
+        //  localStorage.setItem('inventory', JSON.stringify(prodcutArray));
         function add() {
-            let itemName = document.getElementById('itemName').value
-            let itemPrice = document.getElementById('itemPrice').value
-            let itemQuantity = document.getElementById('itemQuantity').value;
-
+            //itemName:name,
+        
+            let itemName = document.getElementById('itemName').value;
+            let itemCategory = document.getElementById('category').value;
+            let itemQuantity = document.getElementById('quantity').value;
+            let itemPrice = document.getElementById('price').value;
+            let itemBrand = document.getElementById('brand').value;
+            let itemDescription = document.getElementById('itemDescription').value;
+            let itemProductID = document.getElementById('itemProductID').value;
+            let itemImage = document.getElementById('itemImage').value;
+            let itemRatings = document.getElementById('itemRatings').value;
+            prodcutArray.push({ name: itemName, category:itemCategory,Quantity:itemQuantity,price:itemPrice, brand:itemBrand, description: itemDescription,
+            image:itemImage,ratings:itemRatings });
+            localStorage.setItem('inventory', JSON.stringify(prodcutArray));
             let newRow = document.createElement('tr')
-            newRow.innerHTML = '<td for="itemName">' + itemName + '</td><td for="itemPrice">'
-                + itemPrice + '</td><td for="itemQuantity">' + itemQuantity + '</td><td>'
-                + '<button onclick="editRow(this);">Edit</button></td><td>'
-                + '<button onclick="deleteRow(this);">Delete</button></td>';
+         
 
+
+
+            newRow.innerHTML = `<td for="itemName">${itemName}</td>
+    <td for="itemCategory">${itemCategory}</td>
+    <td for="itemQuantity">${itemQuantity}</td>
+    <td for="itemPrice">${itemPrice}</td>
+    <td for="itemBrand">${itemBrand}</td>
+    <td for="itemDescription">${itemDescription}</td>
+    <td for="itemProductID">${itemProductID}</td>
+    <td for="itemImage">${itemImage}</td>
+    <td for="itemRatings">${itemRatings}</td>
+    <td><button onclick="editRow(this);">Edit</button></td>
+    <td><button onclick="deleteRow(this);">Delete</button></td>`;
             let table = document.getElementById('myTable');
             table.append(newRow);
+           
         }
-
         function editRow(self) {
             let parent = self.parentElement.parentElement;
             for (let i = 0; i < parent.children.length; i++) {
-                if (parent.children[i].getAttribute('for') == 'itemName')
-                    document.getElementById('itemName').value = parent.children[i].innerHTML;
-                else if (parent.children[i].getAttribute('for') == 'itemPrice')
-                    document.getElementById('itemPrice').value = parent.children[i].innerHTML;
-                else if (parent.children[i].getAttribute('for') == 'itemQuantity')
-                    document.getElementById('itemQuantity').value = parent.children[i].innerHTML;
+                if (parent.children[i].getAttribute('for') == 'itemName'){
+                document.getElementById('itemName').value=parent.children[i].innerHTML; 
+                parent.remove();
+                 } else if (parent.children[i].getAttribute('for') == 'itemCategory'){
+                    document.getElementById('category').value = parent.children[i].innerHTML;
+                    parent.remove();
+                 }else if (parent.children[i].getAttribute('for') == 'itemQuantity'){
+                    document.getElementById('quantity').value = parent.children[i].innerHTML;
+                    parent.remove();
+                 }else if (parent.children[i].getAttribute('for') == 'itemPrice'){
+                    document.getElementById('price').value = parent.children[i].innerHTML;
+                    parent.remove();
+                 }else if (parent.children[i].getAttribute('for') == 'itemBrand'){
+                    document.getElementById('brand').value = parent.children[i].innerHTML;
+                    parent.remove();
+                 }else if (parent.children[i].getAttribute('for') == 'itemDescription'){
+                    document.getElementById('itemDescription').value = parent.children[i].innerHTML;
+                    parent.remove();
+                 }else if (parent.children[i].getAttribute('for') == 'itemProductID'){
+                    document.getElementById('itemProductID').value = parent.children[i].innerHTML;
+                    parent.remove();
+                  } else if (parent.children[i].getAttribute('for') == 'itemImage'){
+                    document.getElementById('itemImage').value = parent.children[i].innerHTML;
+                    parent.remove();
+                  }else if (parent.children[i].getAttribute('for') == 'itemRatings'){
+                    document.getElementById('itemRatings').value = parent.children[i].innerHTML;
+                    parent.remove();
+
             }
         }
+    }
 
         function deleteRow(self) {
             let parent = self.parentElement.parentElement;
             parent.remove();
         }
+        /*function clearEditingBar() {
+  const editingBar = document.getElementById("itemName");
+  editingBar.value = "";
+}
+document.createElement('button');
+
+const button = document.getElementById("clear-button");
+button.addEventListener("click", clearEditingBar);*/
+// function clearThis(target) {
+//     const editingBar = document.getElementById("itemName");
+
+//  if (target.value ==editingBar) {
+
+//  target.value = "";
+
+//  }
+
+// }
     </script>
 </head>
 
 <body>
+    <header
+        style="font-style: italic;color:darkred;border:2px solid red;text-align: center;font-size: larger;background-color: azure;">
+        Welcome to the Inventory Page
+        in this page you can add,edit and delete your items.
+    </header><br>
     Name:<input type="text" id='itemName' />
-    Price:<input type="text" id='itemPrice' />
-    Quantity:<input type="text" id='itemQuantity' />
+    Category:<input type="text" id='category' />
+    Quantity:<input type="text" id='quantity' />
+    Price:<input type="text" id='price' />
+    Brand:<input type="text" id='brand' />
+    Description:<input type="text" id='itemDescription' />
+    ProductID:<input type="text" id='itemProductID' />
+    Image:<input type="text" id='itemImage' />
+    <select id='itemRatings' class="rating">
+        Ratings
+        <option value="1">★</option>
+        <option value="2">★★</option>
+        <option value="3">★★★</option>
+        <option value="4">★★★★</option>
+        <option value="5">★★★★★</option>
+    </select>
     <button onclick="add();">Add</button>
     <table id='myTable'>
         <tr>
             <th>Name</th>
-            <th>Price</th>
+            <th>Category</th>
             <th>Quantity</th>
+            <th>Price</th>
+            <th>Brand</th>
+            <th>Description</th>
+            <th>ProductID</th>
+            <th>imageURL</th>
+            <th>Ratings</th>
         </tr>
     </table>
 </body>
