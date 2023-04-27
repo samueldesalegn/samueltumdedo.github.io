@@ -121,7 +121,7 @@
                   </div>
         <div style="color: blue;">
 
-                    Lists/Buy Again
+                    Lists/ Buy Again
 
                   </div>
 
@@ -143,7 +143,6 @@
       <option value="lowToHigh" id="lowToHigh">priceLowToHigh</option>
       <option value="highToLow" id="highToLow">priceHighToLow</option>
       <option value="ratings" id="highToLow">ratingsHigh</option>
-      <option value="name" id="name">name</option>
      
     </select>
 <div id="inventory-list"></div>
@@ -182,18 +181,16 @@
   }
 
     let selected=[];
-    console.log(selected);
+    console.log("selected: ",selected);
 
     function addToCart() {
-      
-
       const cartCounter = document.getElementById('cart-counter');
       const count = parseInt(cartCounter.innerText);
       cartCounter.innerText = count + 1;
-      let itemName = document.getElementById('nameSection').innerText;
+      let itemName = document.getElementById('nameSection').innerHTML;
       let itemPrice = document.getElementById('priceSection').innerHTML;
       let itemImageId = event.target.parentNode.parentNode.childNodes.getAttribute('id');
-      let itemImage = document.getElementById(itemImageId).getAttribute('value');
+      let itemImage = document.getElementById(itemImageId).getAttribute('value');
       let itemRatings = document.getElementById('ratingSection').innerHTML;
       selected.push({image:itemImage,name:itemName,price:itemPrice,ratings:itemRatings});
       localStorage.setItem('customer', JSON.stringify(selected));
@@ -217,7 +214,7 @@
     function display() {
       const addToCartBt = document.getElementById('cartId');
       if (addToCartBt) {
-        console.log(addToCartBt);
+        // console.log(addToCartBt);
         window.location.href = "selectedProduct.html";
 
         
@@ -228,20 +225,25 @@
      // var div = document.getElementById('inventory-list');
 
       div.innerHTML = "";
+
       for (let elem of obj) {
+        console.log(elem.image);
         div.innerHTML += `
 						<div style="display:flex;gap:10px;flex-wrap:wrap;">
-							<img src="imageCollection/Bed/${elem.image}" id="imageSection" value="${elem.image}" style="height:100px;width:100px;object-fit: cover;">
-							<div>
-								<div id="nameSection">${elem.name}</div>
-								<p id="categorySection">${elem.category}</p>
-								<p id="priceSection">${elem.price}</p>
-								<p id="ratingSection">${elem.ratings}</p>
-                <button class="minusBtn" id="minus-to-cart">-</button>
-                <button class="plusBtn" id="plus-to-cart">+</button>
-                <button class="mainBtn" id="add-to-cart">Add To cart</button>
-							</div>
-						</div>
+              <div>
+                <img src="imageCollection/Bed/${elem.image}" id="imageSection" value="${elem.image}" style="height:100px;width:100px;object-fit: cover;">
+                <div>
+                  <div id="nameSection">${elem.name}</div>
+                  <p id="categorySection">${elem.category}</p>
+                  <p id="priceSection">${elem.price}</p>
+                  <p id="ratingSection">${elem.ratings}</p>
+                  <button class="minusBtn" id="minus-to-cart">-</button>
+                  <button class="plusBtn" id="plus-to-cart">+</button>
+                  <button class="mainBtn" id="add-to-cart">Add To cart</button>
+                </div>
+              </div>
+    
+             </div>
 					`;
       }
     }
@@ -253,7 +255,7 @@
 
 function compare() {
     const selectElement = document.getElementById('sort-select');
-    console.log(selectElement);
+    // console.log(selectElement);
     const selectedOption = selectElement.value;
 
     let createList;
@@ -264,7 +266,7 @@ function compare() {
     } else if (selectedOption === 'ratings') {
       createList = obj.sort((a, b) => b.ratings - a.ratings);
     } else if (selectedOption === 'name') {
-      createList = obj.sort((a, b) => (a.name > b.name)? 1: -1);
+      createList = obj.sort((a, b) => a.name > b.name);
     } else {
       createList = obj;
     }
@@ -287,10 +289,11 @@ function compare() {
   }
 }
 
-product.price < 250 
-product.price >250 && product.price < 1000
-product.price >= 1000
+
+
   </script>
+
+ 
 
 </body>
 
