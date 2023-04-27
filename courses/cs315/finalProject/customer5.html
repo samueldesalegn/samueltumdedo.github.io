@@ -143,26 +143,45 @@
       <div> <label for=""><h3>filter </h3></label> 
       </div>
       
-      <select name="" id="filter" onchange="filterP()">
-        <option value="min-price">low-price-range</option>
-        <option value="max-price">medium-price-range</option>
-        <option value="max-price">expensive-category</option>
+      <select name="" id="filter">
+        <option value="category" > Category</option>
+        <option value="min-rating">min Rating</option>
+        <option value="max-rating"> max Rating</option>
+        <option value="brandf"> Brand</option>
+        <option value="min-price"> min-price</option>
+        <option value="max-price">max- price</option>
         <option value="clear"> clear all filter</option>
 
       </select>
 
 
       <button onclick="clearFilter()">clearFilter</button>
-      
+
+      <div id="min-filter-data" style="display: none;">
+          <label for="min-price-value">Min Price</label>
+          <input type="number" id="min-price-value">
       </div>
+
+      <div id="min-rating-data" style="display: none;">
+        <label for="max-rating-value">Max Rating</label>
+        <input type="number" id="max-rating-value">
+      </div>
+
+      <div id="min-category-data" style="display: none;">
+        <label for="category-value">Max Rating</label>
+        <select name="categories" id="category-select"></select>
+      </div>
+      
+    </div>
 
 <div>
 
-    <select name="" id="sort-select" onchange="compare()">
+    <select name="" id="sort-select" onchange="compare()" style="margin: 20px">
       
       <option value="lowToHigh" id="lowToHigh">priceLowToHigh</option>
       <option value="highToLow" id="highToLow">priceHighToLow</option>
       <option value="ratings" id="highToLow">ratingsHigh</option>
+      <option value="name" id="name">name</option>
      
     </select>
 <div id="inventory-list"></div>
@@ -174,6 +193,8 @@
 </div>
   </div>
 </div>
+
+
 
   <script>
 
@@ -206,24 +227,41 @@
     addToCartBtns[i].addEventListener('click', addToCart);
   }
 
-    let selected=[];
-    // console.log(selected);
 
     function addToCart() {
       
+      let selected;
 
       const cartCounter = document.getElementById('cart-counter');
       const count = parseInt(cartCounter.innerText);
       cartCounter.innerText = count + 1;
+
+
       let itemName = document.getElementById('nameSection').innerText;
       let itemPrice = document.getElementById('priceSection').innerHTML;
-      let itemImageId = event.target.parentNode.parentNode.childNodes.getAttribute('id');
-      let itemImage = document.getElementById(itemImageId).getAttribute('value');
+
+      // let itemImageId = event.target.parentNode.parentNode.childNodes.getAttribute('id');
+      let itemImage = document.getElementByClass('imageSection').getAttribute('src');
+      console.log(itemImage)
+
+
+
       let itemRatings = document.getElementById('ratingSection').innerHTML;
-      selected.push({name:itemName,price:itemPrice,ratings:itemRatings});
-      localStorage.setItem('customer', JSON.stringify(selected));
+
+      selected = {name:itemName,price:itemPrice,ratings:itemRatings,image:itemImage};
+
+      let data = JSON.parse(localStorage.getItem("customer"));
+
+      if(data == [] || data == null) data = []
+
+      console.log(data)
+
+      data.push(selected)
+      localStorage.setItem('customer', JSON.stringify(data));
+      // selected=[];
 
     }
+
     function minusToCart() {
       const cartCounter = document.getElementById('cart-counter');
       const count = parseInt(cartCounter.innerText);
@@ -249,22 +287,26 @@
       }
 
     }
-    function create() {
+    function create(createList) {
      var div = document.getElementById('inventory-list');
 
       div.innerHTML = "";
-      for (let elem of obj) {
+      for (let elem of createList) {
         div.innerHTML += `
-						<div style="display:flex;gap:10px;flex-wrap:wrap;">
-							<img src="imageCollection/Bed/${elem.image}" id="imageSection" value="${elem.image}" style="height:100px;width:100px;object-fit: cover;">
+						<div style="gap: 10px; display: grid; grid-template-columns: 4fr 1fr;">
 							<div>
-								<div id="nameSection">${elem.name}</div>
-								<p id="categorySection">${elem.category}</p>
-								<p id="priceSection">${elem.price}</p>
-								<p id="ratingSection">${elem.ratings}</p>
+								<img src="imageCollection/Bed/${elem.image}" class="imageSection" value="${elem.image}" style="height:100px;width:100px;object-fit: cover;">
+                <label class="id" value=${elem.prodcutId} > 
+								<label id="nameSection">${elem.name}</label>
+								<label id="categorySection">${elem.category}</label>
+								<label id="priceSection">$${elem.price}</label>
+								<label id="ratingSection">${elem.ratings}</label>
+								<div>
                 <button class="minusBtn" id="minus-to-cart">-</button>
                 <button class="plusBtn" id="plus-to-cart">+</button>
                 <button class="mainBtn" id="add-to-cart">Add To cart</button>
+								<div>
+							</label>
 							</div>
 						</div>
 					`;
@@ -280,18 +322,19 @@
 
 function compare() {
     const selectElement = document.getElementById('sort-select');
-    // console.log(selectElement);
+    console.log(selectElement);
     const selectedOption = selectElement.value;
-
+    
     let createList;
     if (selectedOption === 'lowToHigh') {
-      createList = obj.sort((a, b) => a.price - b.price);
+      obj.
+      createList = obj.slice().sort((a, b) => a.price - b.price);
     } else if (selectedOption === 'highToLow') {
-      createList = obj.sort((a, b) => b.price - a.price);
+      createList = obj.slice().sort((a, b) => b.price - a.price);
     } else if (selectedOption === 'ratings') {
-      createList = obj.sort((a, b) => b.ratings - a.ratings);
+      createList = obj.slice().sort((a, b) => b.ratings - a.ratings);
     } else if (selectedOption === 'name') {
-      createList = obj.sort((b, a) => (b.name > a.name)? 1 : -1);
+      createList = obj.slice().sort((b, a) => (b.name > a.name)? 1:-1);
     } else {
       createList = obj;
     }
@@ -314,163 +357,171 @@ function compare() {
   }
 }
 
-console.log(obj.filter(prod => prod.price > 1400));
-function filterP() {
-	
-	clearFilter()
-    const selectElement = document.querySelector('#filter option:checked');
-    console.log(selectElement);
-		// console.log(obj);
-    const selectedOption = selectElement.innerHTML;
-
-    let createList;
-    if (selectedOption === 'low-price-range') {
-      createList = obj.filter(a => a.price <= 500);
-			console.log(createList);
-    } else if (selectedOption === 'medium-price-range') {
-      createList = obj.filter(a => a.price > 500 &&  a.price <= 1200);
-    } else if (selectedOption === 'expensive-category') {
-      createList = obj.filter(b=> b.price > 1200);
-    } else {
-      createList = obj;
-    }
-    create(createList);
-
-	}
-	// filterP();
-// function filterProducts() {
-// //   const minPriceFilter = document.getElementById('min-price');
-// // let selectedFilter=minPriceFilter.value;
-// // const filteredProducts = obj.filter(product => {
-// //   return (product.price<1300 && selectedFilter==='min-price')
-// // });
-// create(filteredProducts);
-// function filterProducts() {
-//   const minPriceFilter = document.getElementById('min-price');
-//   let selectedFilter = minPriceFilter.value;
-//   const filteredProducts = obj.filter(product => {
-//     return (product.price < selectedFilter);
-//   });
-//   create(filteredProducts);
-// }
-//   const brandFilter = document.getElementById('brandf').value;
-
-//   const categoryFilter = document.getElementById('categoryf').value;
-
-  
-
-//   const maxPriceFilter = document.getElementById('max-price').value;
-
-//   const minRatingFilter = document.getElementById('min-rating').value;
-
-//   const maxRatingFilter = document.getElementById('max-rating').value;
 
 
+const filterDropDown = document.getElementById("filter")
+filterDropDown.addEventListener('click', filterP)
 
+const minValueData = document.getElementById("min-filter-data");
+const maxRatingData = document.getElementById('min-rating-data');
+const categoryData = document.getElementById('min-category-data');
 
-  
-//     if (brandFilter && product.brand !== brandFilter) {
-
-//       return false;
-
-//     }
-
-//     if (categoryFilter && product.category !== categoryFilter) {
-
-//       return false;
-
-//     }
-
-//     if (minPriceFilter && parseInt(product.price) < parseInt(minPriceFilter)) {
-
-//       return false;
-
-//     }
-
-//     if (maxPriceFilter && parseInt(product.price) > parseInt(maxPriceFilter)) {
-
-//       return false;
-
-//     }
-
-//     if (minRatingFilter && parseInt(product.ratings) < parseInt(minRatingFilter)) {
-
-//       return false;
-
-//     }
-
-//     if (maxRatingFilter && parseInt(product.ratings) > parseInt(maxRatingFilter)) {
-
-//       return false;
-
-//     }
-
-//     return true;
-
-//   });
-
-// }
-
-function clearFilter(){
-  const brandFilter = document.getElementById('brandf').value='';
-
-  const categoryFilter = document.getElementById('categoryf').value='';
-
-  const minPriceFilter = document.getElementById('min-price').value='';
-
-  const maxPriceFilter = document.getElementById('max-price').value='';
-
-  const minRatingFilter = document.getElementById('min-rating').value='';
-
-  const maxRatingFilter = document.getElementById('max-rating').value='';
-
-create(obj);
-
-
+function hide(){
+  minValueData.style.display = "none";
+  maxRatingData.style.display = "none";
+  categoryData.style.display = "none";
 }
 
+function showFilterData(type){
+  hide();
+  if(type === 'min-price'){
+    minValueData.style.display = "block";
+      const minPriceValue = document.getElementById("min-price-value");
+
+      minPriceValue.addEventListener('change', () => {
+        let createList = obj.slice().filter((o) => {
+          return +o.price >=  minPriceValue.value;
+        })
+        create(createList);
+      })
+  }else if(type === 'max-rating'){
+    maxRatingData.style.display = "block";
+      const maxRatingValue = document.getElementById("max-rating-value");
+      maxRatingValue.addEventListener('change', () => {
+        let createList = obj.slice().filter(o => {
+          return o.ratings == maxRatingValue.value;
+        })
+        create(createList);
+      })
+
+  }else if(type === 'category'){
+    
+    categoryData.style.display = "block";
+    const categorySelect = document.getElementById("category-select");
+    
+    categorySelect.childNodes.forEach(child => child.remove());
+
+    let categories = obj.slice().map(o => o.category);
+    let uniqueCategories = new Set(categories);
+
+    uniqueCategories.forEach(element => {
+      const option = document.createElement("option");
+      option.text = element;
+      option.value = element;
+      categorySelect.appendChild(option);
+    });
 
 
 
+    categorySelect.addEventListener("change", () => {
+      let createList = obj.slice().filter(o => {
+        return o.category == categorySelect.value;
+      })
 
+      create(createList);
+    })
+  }
+}
 
+function clearFilter(){
+  hide();
+  create(obj.slice());
+}
 
+function filterP() {
+	
+	// clearFilter()
+    // console.log(selectElement);
+		// console.log(obj);
+    const selectedOption = filterDropDown.value
+    // console.log(selectedOption)
 
+    showFilterData(selectedOption);
+		const minusBtns = document.getElementsByClassName('minusBtn');
+  const plusBtns = document.getElementsByClassName('plusBtn');
+  const addToCartBtns = document.getElementsByClassName('mainBtn');
 
+  for (let i = 0; i < minusBtns.length; i++) {
+    minusBtns[i].addEventListener('click', minusToCart);
+  }
 
+  for (let i = 0; i < plusBtns.length; i++) {
+    plusBtns[i].addEventListener('click', plusToCart);
+  }
 
-//This is new filter
-
-//  Searching items
-//let searchBtn=document.getElementById("searchBtn");
-// let searchItem=document.getElementById("searchItem");
-
-// searchBtn.onclick=function(){
-  
-//   let searchArr=product.filter(current=>current.category==searchItem.value);
-
-//   if(searchItem.value=="" ){
-//     dept.innerHTML="";
-//     displayProduct(product)
-//   }else if(searchArr.length==0){
-//     dept.innerHTML="";
-//     dept.innerHTML=
-//     "<div style='margin-left:600px;'><h1>No result Found</h1><div>"
-//   }else{
-//     dept.innerHTML="";
-//     displayProduct(searchArr);
-//   }
-// }
-
-// Filtering by rate and price
-
-  
-
-
-   
-
+  for (let i = 0; i < addToCartBtns.length; i++) {
+    addToCartBtns[i].addEventListener('click', addToCart);
+  }
+	}
 
   </script>
+
+<footer id="mainFooter" >
+	<div style="display: flex; flex-direction: 1f 1fr 1fr 1fr; gap: 300px; width: 100%; height: 100%;  object-fit: cover; border-bottom: 20px">
+		<div style="" >About Us 
+			<div>Charitable Contributions</div>
+			<div>Company Information</div>
+			<div>Sustainability Commitment</div>
+			<div>Investor Relations</div>
+			<div>Jobs</div>
+			<div>Kirkland Signature</div>
+			<div>Logo and Media Requests</div>
+			<div>Product Videos</div>
+			<div>The Costco Connection</div>
+			<div>Quick & Easy Recipe Videos</div>
+			<div>Costco Blog</div>
+			<div>Employee Site</div>
+		</div>
+		<div >Membership
+			<div>Join Now</div>
+			<div>Member Privileges</div>
+			<div>Executive Membership Terms</div>
+			<div>Sign In or Register</div>
+			<div>Credit Card</div>
+			<div><strong>Vendors & Suppliers</strong></div>
+			<div> Supply Chain Disclosure</div>
+			<div>Ethics Hotline for Suppliers</div>
+			<div>Supplier Diversity</div>
+			<div>Explore Our Brands</div>
+			
+		</div>
+		<div >Customer Service
+			<div>Costco Shop Card Balance</div>
+			<div>Order By Item Number</div>
+			<div>Concierge Tech Support & Warranty</div>
+			<div>Export & Domestic Volume Sales</div>
+			<div>Order Status</div>
+			<div>Preventing Fraud</div>
+			<div>Shipping</div>
+			<div>Rebates</div>
+			<div>Recalls & Product Notices</div>
+			<div>Returns and Exchanges</div>
+			<div>Returns Policy</div>
+			<div>Accessibility</div>
+		</div>
+		<div >Locations & Services
+			<div>Find a Warehouse</div>
+			<div>Locations Coming Soon</div>
+			<div>Hours and Holiday Closures</div>
+			<div>Gasoline</div>
+			<div>Hearing Aid Center</div>
+			<div>Optical</div>
+			<div>Special Events</div>
+			<div>CostcoGrocery</div>
+			<div>Grocery by Instacart</div>
+		</div>
+	</div>
+	<div class="box" >
+		<label for="">
+			<label for="">Site Map</label><label>Terms and Conditions</label>
+			<label for="">Your Privacy Rights</label><label>CA Notice</label>
+			<label for="">Cookie Settings</label><label>Your Privacy Choices</label><label for="">Feedback</label>
+		</label>
+		<p>&copy;1998 — 2023  Costco Wholesale Corporation. All rights reserved 
+			
+	</div>
+	
+</footer>
 
 </body>
 
