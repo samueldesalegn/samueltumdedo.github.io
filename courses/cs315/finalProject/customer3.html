@@ -3,21 +3,20 @@
 <html>
 
 <head>
-    <title>Customer Items</title>
+  <title>Customer Items</title>
 </head>
 
 
 <body>
-   
-    <div>
-        <div style="border:1px solid rgb(206, 201, 201);background-color: rgb(243, 236, 236);">
-            <div
+  <div>
+    <div style="border:1px solid rgb(206, 201, 201);background-color: rgb(243, 236, 236);">
+      <div
         style="display:flex;gap:20px;justify-content: right;padding: 10px;color: rgb(30, 30, 184);font-weight:20px;">
-                <label>While Supplies Last</label>
+        <label>While Supplies Last</label>
 
-                <label>Treasure new</label>
+        <label>Treasure new</label>
 
-                <label>What's new</label>
+            <label>What's new</label>
 
                 <label>Same-Day</label>
 
@@ -32,10 +31,6 @@
         <select style="font-weight: 10px;color:rgba(0, 0, 255, 0.867);">
 
                     <option value="">US</option>
-                    <option value="">CANADA</option>
-                    <option value="">UK</option>
-                  
-
                   </select>
            
       </div>
@@ -63,7 +58,7 @@
 
                 <div>
           <div id="cartId">
-            <button onclick="display()" style="border-radius: 15px;"> <span type="button" id="cart-counter" >0</span><img
+            <button onclick="display()"> <span type="button" id="cart-counter">0</span><img
                 src="https://img.icons8.com/doodle/1x/shopping-cart.png" alt="" style="width:20px;"></button>
           </div>
 
@@ -180,21 +175,11 @@
     addToCartBtns[i].addEventListener('click', addToCart);
   }
 
-    let selected=[];
-    console.log("selected: ",selected);
 
     function addToCart() {
       const cartCounter = document.getElementById('cart-counter');
       const count = parseInt(cartCounter.innerText);
       cartCounter.innerText = count + 1;
-      let itemName = document.getElementById('nameSection').innerHTML;
-      let itemPrice = document.getElementById('priceSection').innerHTML;
-      let itemImageId = event.target.parentNode.parentNode.childNodes.getAttribute('id');
-      let itemImage = document.getElementById(itemImageId).getAttribute('value');
-      let itemRatings = document.getElementById('ratingSection').innerHTML;
-      selected.push({image:itemImage,name:itemName,price:itemPrice,ratings:itemRatings});
-      localStorage.setItem('customer', JSON.stringify(selected));
-
     }
     function minusToCart() {
       const cartCounter = document.getElementById('cart-counter');
@@ -214,7 +199,7 @@
     function display() {
       const addToCartBt = document.getElementById('cartId');
       if (addToCartBt) {
-        // console.log(addToCartBt);
+        console.log(addToCartBt);
         window.location.href = "selectedProduct.html";
 
         
@@ -225,17 +210,15 @@
      // var div = document.getElementById('inventory-list');
 
       div.innerHTML = "";
-
       for (let elem of obj) {
-        console.log(elem.image);
         div.innerHTML += `
 						<div style="display:flex;gap:10px;flex-wrap:wrap;">
-							<img src="imageCollection/Bed/${elem.image}" id="imageSection" value="${elem.image}" style="height:100px;width:100px;object-fit: cover;">
+							<img src="imageCollection/Bed/${elem.image}" style="height:100px;width:100px;object-fit: cover;">
 							<div>
-								<div id="nameSection">${elem.name}</div>
-								<p id="categorySection">${elem.category}</p>
-								<p id="priceSection">${elem.price}</p>
-								<p id="ratingSection">${elem.ratings}</p>
+								<div>${elem.name}</div>
+								<p>${elem.category}</p>
+								<p>${elem.price}</p>
+								<p>${elem.ratings}</p>
                 <button class="minusBtn" id="minus-to-cart">-</button>
                 <button class="plusBtn" id="plus-to-cart">+</button>
                 <button class="mainBtn" id="add-to-cart">Add To cart</button>
@@ -244,15 +227,10 @@
 					`;
       }
     }
-// const lowToHigh = document.getElementById('lowToHigh');
-// lowToHigh.addEventListener('change', compare);
-
-// const highToLow = document.getElementById('highToLow');
-// highToLow.addEventListener('change', compare);
 
 function compare() {
     const selectElement = document.getElementById('sort-select');
-    // console.log(selectElement);
+    console.log(selectElement);
     const selectedOption = selectElement.value;
 
     let createList;
@@ -262,8 +240,6 @@ function compare() {
       createList = obj.sort((a, b) => b.price - a.price);
     } else if (selectedOption === 'ratings') {
       createList = obj.sort((a, b) => b.ratings - a.ratings);
-    } else if (selectedOption === 'name') {
-      createList = obj.sort((a, b) => b.name - a.name);
     } else {
       createList = obj;
     }
@@ -285,6 +261,9 @@ function compare() {
     addToCartBtns[i].addEventListener('click', addToCart);
   }
 }
+
+
+
 
 
 
