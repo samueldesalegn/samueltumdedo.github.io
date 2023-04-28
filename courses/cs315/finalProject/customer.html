@@ -150,7 +150,7 @@
         <option value="brandf"> Brand</option>
         <option value="min-price"> min-price</option>
         <option value="max-price">max- price</option>
-        <option value="clear"> clear all filter</option>
+       
 
       </select>
 
@@ -200,15 +200,10 @@
 
     var obj = JSON.parse(localStorage.getItem('inventory'));
 
-    // Parse the 'inventory' item from localStorage
-
     var div = document.getElementById('inventory-list');
-    // console.log(div.id);
+   
     div.setAttribute('style', 'display:flex;gap:10px;flex-wrap:wrap;');
-    // let btn = document.createElement('button');
-    // btn.setAttribute('onclick', 'compare()');
-    // btn.innerHTML = 'sort';
-    // div.before(btn);
+   
     create(obj);
 
 
@@ -240,7 +235,7 @@
       let itemName = document.getElementById('nameSection').innerText;
       let itemPrice = document.getElementById('priceSection').innerHTML;
 
-      // let itemImageId = event.target.parentNode.parentNode.childNodes.getAttribute('id');
+      
       let itemImage = document.getElementByClass('imageSection').getAttribute('src');
       console.log(itemImage)
 
@@ -314,12 +309,6 @@
 					`;
       }
     }
-// const lowToHigh = document.getElementById('lowToHigh');
-// lowToHigh.addEventListener('change', compare);
-
-// const highToLow = document.getElementById('highToLow');
-
-// highToLow.addEventListener('change', compare);
 
 
 function compare() {

@@ -135,15 +135,19 @@ function create() {
   newDiv.innerHTML = "";
   for (let elem of obj) {
     newDiv.innerHTML += `
-      <div style="display:flex;gap:10px;flex-wrap:wrap;">
-        <img src="imageCollection/Bed/${elem.image}" style="height:100px;width:100px;object-fit: cover;">
-        <div>
-          <div>${elem.name}</div>
-          <p>${elem.price}</p>
-          <p>${elem.ratings}</p>
-         
-        </div>
-      </div>
+    <div style="gap: 10px; display: grid; grid-template-columns: 4fr 1fr;">
+							<div>
+								<img src="imageCollection/Bed/${elem.image}" class="imageSection" value="${elem.image}" style="height:200px;width:200px;object-fit: cover;">
+								<div>
+                <label class="id" value=${elem.prodcutId} > 
+								<label id="nameSection">${elem.name}</label>
+								<label id="categorySection">${elem.category}</label>
+								<label id="ratingSection">${elem.ratings}</label>
+								</div>
+								<label id="priceSection">$${elem.price}</label>
+							</label>
+							</div>
+						</div>
     `;
   }
 }
