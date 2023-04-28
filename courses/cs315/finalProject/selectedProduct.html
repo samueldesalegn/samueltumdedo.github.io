@@ -146,144 +146,168 @@ function create() {
 								</div>
 								<label id="priceSection">$${elem.price}</label>
 							</label>
+              <button id="myButton" style="border:2px solid yellow;background-color:green;width:200px;heught:30%">CheckOut</button>
 							</div>
 						</div>
     `;
   }
 }
 
+document.getElementById("myButton").onclick = function () {
+
+        window.location.href = "thankYou.html";
+
+    };
+
+
+
 </script>
 
 <footer id="mainFooter"
-    style="margin-top: 100px; background-color: rgb(243, 236, 236); padding: 50px; width: 100%;height:100%; ">
+style="margin-top: 100px; background-color: rgb(243, 236, 236); padding: 50px; width: 100%;height:100%; color: rgb(83, 81, 81); ">
 
-    <div style="padding:20px; display: flex; gap:100px;justify-content: left; padding-left:100px; font-size: 20px;">
+<div style="padding:20px; display: flex; gap:100px;justify-content: left; padding-left:100px; font-size: 20px;">
 
-      <div>Customer
-        <br>
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Blue_question_mark_icon.svg/768px-Blue_question_mark_icon.svg.png"
-          alt="" style="width:20px; object-fit: cover;"><label for="" style="color: rgb(108, 102, 102);"> Get help
-        </label>
+  <div>Customer
+    <br>
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Blue_question_mark_icon.svg/768px-Blue_question_mark_icon.svg.png"
+      alt="" style="width:20px; object-fit: cover;"><label for="" style="color: rgb(108, 102, 102);"> Get help
+    </label>
 
-      </div>
-      <div>Find a Warehouse <br>
-        <input type="text" placeholder="City, state or zip" style="min-height:30px;width:120%;">
-      </div>
-      <div>Get Email Offers</div>
-      <div>follow <br>
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/2048px-2021_Facebook_icon.svg.png"
-          alt="" style="width: 20px; object-fit:cover;">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/2048px-Instagram_icon.png"
-          alt="" style="width: 20px; object-fit:cover;">
+  </div>
+  <div>Find a Warehouse <br>
+    <input type="text" placeholder="City, state or zip" style="min-height:30px;width:120%;">
+  </div>
+  <div>Get Email Offers
+    <br>
+    <input type="text" placeholder="Enter Email Address" style="min-height:30px;width:120%;">
+  </div>
+  <div>follow <br>
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/2048px-2021_Facebook_icon.svg.png"
+      alt="" style="width: 20px; object-fit:cover;">
+    <img src="https://cdn-icons-png.flaticon.com/512/174/174863.png" alt="" style="width: 20px; object-fit:cover;">
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/2048px-Instagram_icon.png"
+      alt="" style="width: 20px; object-fit:cover;">
 
-      </div>
-      <div>Get the Costco App</div>
+  </div>
+  <div>Get the Costco App
+    <br>
+    <img src="https://companieslogo.com/img/orig/COST-180a6d1f.png?t=1633439405" alt=""
+      style="width: 20px; object-fit:cover;">
+  </div>
 
 
 
 
 
+</div>
+
+<hr>
+
+
+<div style="display: flex; flex-direction: 1f 1fr 1fr 1fr; gap:100px; width: 100%; height: 100%;  object-fit: cover;
+   border-bottom: 20px; justify-content:left; padding-left:100px; padding-bottom:50px;">
+
+  <div style="">
+    <div>
+      <h3>About Us</h3>
+    </div>
+    <div>Charitable Contributions</div>
+    <div>Company Information</div>
+    <div>Sustainability Commitment</div>
+    <div>Investor Relations</div>
+    <div>Jobs</div>
+    <div>Kirkland Signature</div>
+    <div>Logo and Media Requests</div>
+    <div>Product Videos</div>
+    <div>The Costco Connection</div>
+    <div>Quick & Easy Recipe Videos</div>
+    <div>Costco Blog</div>
+    <div>Employee Site</div>
+  </div>
+  <div>
+    <div>
+      <h3>Membership</h3>
     </div>
 
-    <hr>
 
+    <div>Join Now</div>
+    <div>Member Privileges</div>
+    <div>Executive Membership Terms</div>
+    <div>Sign In or Register</div>
+    <div>Credit Card</div>
 
-    <div style="display: flex; flex-direction: 1f 1fr 1fr 1fr; gap:100px; width: 100%; height: 100%;  object-fit: cover;
-       border-bottom: 20px; justify-content:left; padding-left:100px; padding-bottom:50px;">
-
-      <div style="">
-        <div>
-          <h3>About Us</h3>
-        </div>
-        <div>Charitable Contributions</div>
-        <div>Company Information</div>
-        <div>Sustainability Commitment</div>
-        <div>Investor Relations</div>
-        <div>Jobs</div>
-        <div>Kirkland Signature</div>
-        <div>Logo and Media Requests</div>
-        <div>Product Videos</div>
-        <div>The Costco Connection</div>
-        <div>Quick & Easy Recipe Videos</div>
-        <div>Costco Blog</div>
-        <div>Employee Site</div>
-      </div>
-      <div>
-        <div>
-          <h3>Membership</h3>
-        </div>
-
-
-        <div>Join Now</div>
-        <div>Member Privileges</div>
-        <div>Executive Membership Terms</div>
-        <div>Sign In or Register</div>
-        <div>Credit Card</div>
-
-        <div>
-          <h3>Vendors & Suppliers</h3>
-        </div>
-
-
-        <div> Supply Chain Disclosure</div>
-        <div>Ethics Hotline for Suppliers</div>
-        <div>Supplier Diversity</div>
-        <div>Explore Our Brands</div>
-
-      </div>
-      <div>
-        <div>
-          <h3>Customer Service</h3>
-        </div>
-
-
-        <div>Costco Shop Card Balance</div>
-        <div>Order By Item Number</div>
-        <div>Concierge Tech Support & Warranty</div>
-        <div>Export & Domestic Volume Sales</div>
-        <div>Order Status</div>
-        <div>Preventing Fraud</div>
-        <div>Shipping</div>
-        <div>Rebates</div>
-        <div>Recalls & Product Notices</div>
-        <div>Returns and Exchanges</div>
-        <div>Returns Policy</div>
-        <div>Accessibility</div>
-      </div>
-      <div>
-        <div>
-          <h3>Locations & Services
-          </h3>
-        </div>
-
-
-
-        <div>Find a Warehouse</div>
-        <div>Locations Coming Soon</div>
-        <div>Hours and Holiday Closures</div>
-        <div>Gasoline</div>
-        <div>Hearing Aid Center</div>
-        <div>Optical</div>
-        <div>Special Events</div>
-        <div>CostcoGrocery</div>
-        <div>Grocery by Instacart</div>
-      </div>
-    </div>
-    <hr>
-    <div class="box" style="text-align: center;">
-      <div for="">
-        <label for="">Site Map</label><label>Terms and Conditions</label>
-        <label for="">Your Privacy Rights</label><label>CA Notice</label>
-        <label for="">Cookie Settings</label><label>Your Privacy Choices</label><label for="">Feedback</label>
-      </div>
-      <div>&copy;1998 — 2023 Costco Wholesale Corporation. All rights reserved</div>
-
+    <div>
+      <h3>Vendors & Suppliers</h3>
     </div>
 
-  </footer>
 
+    <div> Supply Chain Disclosure</div>
+    <div>Ethics Hotline for Suppliers</div>
+    <div>Supplier Diversity</div>
+    <div>Explore Our Brands</div>
+
+  </div>
+  <div>
+    <div>
+      <h3>Customer Service</h3>
+    </div>
+
+
+    <div>Costco Shop Card Balance</div>
+    <div>Order By Item Number</div>
+    <div>Concierge Tech Support & Warranty</div>
+    <div>Export & Domestic Volume Sales</div>
+    <div>Order Status</div>
+    <div>Preventing Fraud</div>
+    <div>Shipping</div>
+    <div>Rebates</div>
+    <div>Recalls & Product Notices</div>
+    <div>Returns and Exchanges</div>
+    <div>Returns Policy</div>
+    <div>Accessibility</div>
+  </div>
+  <div>
+    <div>
+      <h3>Locations & Services
+      </h3>
+    </div>
+
+
+
+    <div>Find a Warehouse</div>
+    <div>Locations Coming Soon</div>
+    <div>Hours and Holiday Closures</div>
+    <div>Gasoline</div>
+    <div>Hearing Aid Center</div>
+    <div>Optical</div>
+    <div>Special Events</div>
+    <div>CostcoGrocery</div>
+    <div>Grocery by Instacart</div>
+  </div>
+</div>
+<hr>
+<div class="box" style="text-align: center; justify-content: center;">
+
+          <div for="" style="display: flex;gap:20px; justify-content: center;">
+  
+            <label for="">Site Map</label><label>Terms and Conditions</label>
+  
+            <label for="">Your Privacy Rights</label><label>CA Notice</label>
+  
+            <label for="">Cookie Settings</label><label><img src="https://mobilecontent.costco.com/live/resource/img/static-us-landing-pages/icon-privacy-choices.svg" alt="" style="width:20px; object-fit: cover;"> Your Privacy Choices</label><label for="">Feedback</label>
+  
+          </div>
+  
+          <div  style="display: flex;gap:20px; justify-content: center;">&copy;1998 — 2023 Costco Wholesale Corporation. All rights reserved</div>
+  
+   
+  
+        </div>
+
+</footer>
 </body>
 </html>
